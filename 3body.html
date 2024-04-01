@@ -3,32 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>3-body</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<body>
+<body style='margin-top:0;margin-left:30px;margin-right:30px;'>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a id="Home" class="navbar-brand" href="index.html">Gene Siriviboon</a>
+    <div class="collapse navbar-collapse" id="navbarToggle">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a href="index.html" id="Home" class="nav-link">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html" id="Publication "class="nav-link">Publication</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="index.html" id="Fun">Fun</a>
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>
 
-    <p> This is 3-body orbit simulator</p>
+  
+    <h1> 3-Body Motion</h1>
+    <p>
+      Here we have a simple simulatiom of the 3-body motion where the planet (red mass) is orbiting over 
+      two suns that are fixed in space with the energy 
+      
+      \begin{equation}
+      E = \frac{1}{2} m v^2 - GMm  \left( \frac{1}{r_1} - \frac{1}{r_2}  \right)
+      \end{equation}
+      where \(r_1\) and \(r_2\) is the distance from the planet to each sun.
+
+      To integrate the equation of motion, we use the Verlet method where 
+      \begin{align}
+          x(t + \Delta t) &= x(t) + v(t + \Delta t/2) \Delta t \\
+          v(t + \Delta t/2) &= v(t) +  a(t) \Delta t/2 \\
+          v(t) &= v(t + \Delta t/2) +  a(t+\Delta t) \Delta t/2
+      \end{align}
+
+
+    </p>
+    
     <script src="https://d3js.org/d3.v5.js"></script>
-    <div id="my_dataviz"></div>
+    <button type="button" id="restart">restart</button>
+    <div id="animation"></div>
 
+    
     <script>
-
         // set the dimensions and margins of the graph
         const margin = {top: 10, right: 30, bottom: 30, left: 60},
             width = 460 - margin.left - margin.right,
             height = 400 - margin.top - margin.bottom;
             // append the svg object to the body of the page
-            const svg = d3.select("#my_dataviz")
+        const svg = d3.select("#animation")
               .append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
               .append("g")
                 .attr("transform", `translate(${margin.left}, ${margin.top})`)
         
-        // //Read the data
-        // d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv").then( function(data) {
-        
-          // Add X axis
+        const button = d3.select("#restart")
+
         const x = d3.scaleLinear()
             .domain([-50, 50])
             .range([ 0, width ]);
@@ -45,10 +88,18 @@
         svg.append("g")
             .call(d3.axisLeft(y));
 
-        // 1st sun
-        svg.append('g')
+        
+
+
+
+      const x1 = 20
+      const x2 = -20
+
+
+      // 1st sun
+      svg.append('g')
             .append("circle")
-              .attr("cx", x(-5))
+              .attr("cx", x(x1))
               .attr("cy", y(0))
               .attr("r", 5)
               .style("fill", 'black')
@@ -56,19 +107,19 @@
         // 2nd sun
         svg.append('g')
             .append("circle")
-              .attr("cx", x(5))
+              .attr("cx", x(x2))
               .attr("cy", y(0))
               .attr("r", 5)
               .style("fill", 'black')
 
-
-        
+      const x_init = 30
+      const vy_init = 0.7
 
         var timestep = 0
-        var x_mass = 6
+        var x_mass = x_init
         var y_mass = 0
         var vx_mass = 0
-        var vy_mass = 2
+        var vy_mass = vy_init
 
         svg.append('g')
             .append("circle")
@@ -84,18 +135,22 @@
             .attr("stroke-width", 2)
             .attr("stroke", "darkgrey")
 
-        function redraw() {
+      
+
+        
+
+      function redraw() {
         // Update…
         timestep += 1
         
-        vx_mass +=  -0.5 * (x_mass - 5)/((x_mass - 5)**2 + y_mass**2)
-        vx_mass +=  -0.5 * (x_mass + 5)/((x_mass + 5)**2 + y_mass**2) 
+        vx_mass +=  -0.5 * (x_mass - x1)/((x_mass - x1)**2 + y_mass**2)
+        vx_mass +=  -0.5 * (x_mass - x2)/((x_mass - x2)**2 + y_mass**2) 
         
         x_mass += vx_mass
         y_mass += vy_mass
 
-        vy_mass +=  -0.5 * (y_mass)/((x_mass - 5)**2 + y_mass**2)
-        vy_mass +=  -0.5 * (y_mass)/((x_mass + 5)**2 + y_mass**2)  
+        vy_mass +=  -0.5 * (y_mass)/((x_mass - x1)**2 + y_mass**2)
+        vy_mass +=  -0.5 * (y_mass)/((x_mass - x2)**2 + y_mass**2)  
 
 
         svg.selectAll(".mass")
@@ -106,27 +161,37 @@
         }
         
 
-        // svg.selectAll("path")
-        //     .transition()
-        //     .duration(30)
-        //     .attr("cx", x(x_mass))
-        //     .attr("cy", y(y_mass))
-        
 
         setInterval(function() {
             redraw();  // call the function you created to update the chart
         }, 30);
 
+
+        button.on("click", function (){
+          timestep = 0
+          x_mass = x_init
+          y_mass = 0
+          vx_mass = 0
+          vy_mass = vy_init
+
+          redraw()
+        })
+
         
           
         
-        //   svg.selectAll("circle")
-        //     .transition()
-        //     .delay(function(d,i){return(i*3)})
-        //     .duration(2000)
-        //     .attr("cx", function (d) { return x(d.GrLivArea); } )
-        //     .attr("cy", function (d) { return y(d.SalePrice); } )
-        // })
-        // </script>
+      </script>
+      <script>
+        MathJax = {
+          tex: {
+            tags: 'ams'  // should be 'ams', 'none', or 'all'
+          }
+        };
+        </script>
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>
