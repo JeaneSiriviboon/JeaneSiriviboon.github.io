@@ -1,132 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneSiriviboon</title>
 </head>
 <body>
-
-    <p> This is 3-body orbit simulator</p>
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <div id="my_dataviz"></div>
-
-    <script>
-
-        // set the dimensions and margins of the graph
-        const margin = {top: 10, right: 30, bottom: 30, left: 60},
-            width = 460 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
-            // append the svg object to the body of the page
-            const svg = d3.select("#my_dataviz")
-              .append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-              .append("g")
-                .attr("transform", `translate(${margin.left}, ${margin.top})`)
-        
-        // //Read the data
-        // d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv").then( function(data) {
-        
-          // Add X axis
-        const x = d3.scaleLinear()
-            .domain([-50, 50])
-            .range([ 0, width ]);
-          
-            svg.append("g")
-            .attr("class", "myXaxis")   // Note that here we give a class to the X axis, to be able to call it later and modify it
-            .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(x))
-        
-          // Add Y axis
-        const y = d3.scaleLinear()
-            .domain([-50, 50])
-            .range([ height, 0]);
-        svg.append("g")
-            .call(d3.axisLeft(y));
-
-        // 1st sun
-        svg.append('g')
-            .append("circle")
-              .attr("cx", x(-5))
-              .attr("cy", y(0))
-              .attr("r", 5)
-              .style("fill", 'black')
-        
-        // 2nd sun
-        svg.append('g')
-            .append("circle")
-              .attr("cx", x(5))
-              .attr("cy", y(0))
-              .attr("r", 5)
-              .style("fill", 'black')
+<h1>
+  Gene Siriviboon
+</h1>
 
 
-        
+<h2>
+  Publication
+</h2>
+<ul>
+  <li>Fu, C., Siriviboon, P., Boonkird, A., Landry, M., Li, C., Xie, W., & Li, M. (2024). Anomalous Neutron Nuclear-Magnetic Interference Spectroscopy. arXiv preprint arXiv:2403.13990.</li> 
+	<li> Drucker, N., Nguyen, T., Mandal, M., Siriviboon, P., Quan, Y., Boonkird, A., ... & Li, M. (2024). Incipient nematicity from electron flat bands in a kagome metal. arXiv preprint arXiv:2401.17141.</li> 
+	<li> Drucker, N. C., Nguyen, T., Han, F., Siriviboon, P., Luo, X., Andrejevic, N., ... & Li, M. (2023). Topology stabilized fluctuations in a magnetic nodal semimetal. <i>Nature Communications</i>, 14(1), 5182.</li> 
+	<li> Mandal, M., Drucker, N. C., Siriviboon, P., Nguyen, T., Boonkird, A., Lamichhane, T. N., ... & Li, M. (2023). Topological superconductors from a materials perspective. <i>Chemistry of Materials</i>, 35(16), 6184-6200.</li> 
+	<li> Lin, J. X., Siriviboon, P., Scammell, H. D., Liu, S., Rhodes, D., Watanabe, K., ... & Li, J. I. A. (2022). Zero-field superconducting diode effect in small-twist-angle trilayer graphene. <i>Nature Physics</i> , 18(10), 1221-1227.</li> 
+  <li> Phum Siriviboon, Jiang-Xiazi Lin, Harley D. Scammell, Song Liu, Daniel Rhodes, K. Watanabe, T. Taniguchi, James Hone, Mathias S. Scheurer, and J. I. A. Li. Abundance of density wave phases in twisted trilayer graphene on WSe2. 2021. arXiv:2112.07127</li> 
+  <li> Phum Siriviboon, Chawalit Tungkaburee, Naruepon Weerawongphrom, and Chadin Kulsing. Direct equations to retention time calculation and fast simulation approach for simultaneous material selection and experimental design in comprehensive two dimensional gas chromatography. <i>Journal of Chromatography A</i>, 1602:425-431, 2019 </li> 
+</ul>
 
-        var timestep = 0
-        var x_mass = 6
-        var y_mass = 0
-        var vx_mass = 0
-        var vy_mass = 2
+<h2>Fun Project</h2>
 
-        svg.append('g')
-            .append("circle")
-              .attr("cx", x(x_mass))
-              .attr("cy", y(y_mass))
-              .attr("r", 5)
-              .attr("r", 5)
-              .attr("class", "mass")
-              .style("fill", 'red')
-
-        svg.append("path")
-            .attr("fill", "none")
-            .attr("stroke-width", 2)
-            .attr("stroke", "darkgrey")
-
-        function redraw() {
-        // Update…
-        timestep += 1
-        
-        vx_mass +=  -0.5 * (x_mass - 5)/((x_mass - 5)**2 + y_mass**2)
-        vx_mass +=  -0.5 * (x_mass + 5)/((x_mass + 5)**2 + y_mass**2) 
-        
-        x_mass += vx_mass
-        y_mass += vy_mass
-
-        vy_mass +=  -0.5 * (y_mass)/((x_mass - 5)**2 + y_mass**2)
-        vy_mass +=  -0.5 * (y_mass)/((x_mass + 5)**2 + y_mass**2)  
+<ul>
+<li><a href="3body.html">3-body problems</a></li>
+</ul>
 
 
-        svg.selectAll(".mass")
-            .transition()
-            .duration(30)
-            .attr("cx", x(x_mass))
-            .attr("cy", y(y_mass))
-        }
-        
-
-        // svg.selectAll("path")
-        //     .transition()
-        //     .duration(30)
-        //     .attr("cx", x(x_mass))
-        //     .attr("cy", y(y_mass))
-        
-
-        setInterval(function() {
-            redraw();  // call the function you created to update the chart
-        }, 30);
-
-        
-          
-        
-        //   svg.selectAll("circle")
-        //     .transition()
-        //     .delay(function(d,i){return(i*3)})
-        //     .duration(2000)
-        //     .attr("cx", function (d) { return x(d.GrLivArea); } )
-        //     .attr("cy", function (d) { return y(d.SalePrice); } )
-        // })
-        // </script>
+  
 </body>
 </html>
