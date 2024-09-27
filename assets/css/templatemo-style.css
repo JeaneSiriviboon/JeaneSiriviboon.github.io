@@ -73,6 +73,10 @@ ol.left{
     text-align: left;
 }
 
+ol.bullet{
+    list-style: circle;
+}
+
 html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
