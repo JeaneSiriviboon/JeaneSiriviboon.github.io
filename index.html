@@ -1,59 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GeneSiriviboon</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
 
+    <title>Phum (Gene) Siriviboon</title>
+<!--
+Reflux Template
+https://templatemo.com/tm-531-reflux
+-->
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a id="Home" class="navbar-brand" href="#">Gene Siriviboon</a>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a href="#Home" class="nav-link">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a href="#Publication "class="nav-link">Publication</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#Fun">Fun</a>
-      </li>
-    </ul>
-    <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
-  </div>
-</nav>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.css" />
+  </head>
 
-<h2 id="Publication">
-  Publication
-</h2>
-<ul>
-  <li>Fu, C., Siriviboon, P., Boonkird, A., Landry, M., Li, C., Xie, W., & Li, M. (2024). Anomalous Neutron Nuclear-Magnetic Interference Spectroscopy. arXiv preprint arXiv:2403.13990.</li> 
-	<li> Drucker, N., Nguyen, T., Mandal, M., Siriviboon, P., Quan, Y., Boonkird, A., ... & Li, M. (2024). Incipient nematicity from electron flat bands in a kagome metal. arXiv preprint arXiv:2401.17141.</li> 
-	<li> Drucker, N. C., Nguyen, T., Han, F., Siriviboon, P., Luo, X., Andrejevic, N., ... & Li, M. (2023). Topology stabilized fluctuations in a magnetic nodal semimetal. <i>Nature Communications</i>, 14(1), 5182.</li> 
-	<li> Mandal, M., Drucker, N. C., Siriviboon, P., Nguyen, T., Boonkird, A., Lamichhane, T. N., ... & Li, M. (2023). Topological superconductors from a materials perspective. <i>Chemistry of Materials</i>, 35(16), 6184-6200.</li> 
-	<li> Lin, J. X., Siriviboon, P., Scammell, H. D., Liu, S., Rhodes, D., Watanabe, K., ... & Li, J. I. A. (2022). Zero-field superconducting diode effect in small-twist-angle trilayer graphene. <i>Nature Physics</i> , 18(10), 1221-1227.</li> 
-  <li> Siriviboon, P., Lin, J. X., Scammell, H. D., Liu, S., Rhodes, D., Watanabe, K., ... & Li, J. (2021). Abundance of density wave phases in twisted trilayer graphene on WSe2. arXiv preprint arXiv:2112.07127.</li> 
-  <li> Siriviboon, P., Tungkaburee, C., Weerawongphrom, N., & Kulsing, C. (2019). Direct equations to retention time calculation and fast simulation approach for simultaneous material selection and experimental design in comprehensive two dimensional gas chromatography. <i>Journal of Chromatography A</i> , 1602, 425-431. </li> 
-</ul>
+  <body>
+    <div id="page-wraper">
+      <!-- Sidebar Menu -->
+      <div class="responsive-nav">
+        <i class="fa fa-bars" id="menu-toggle"></i>
+        <div id="menu" class="menu">
+          <i class="fa fa-times" id="menu-close"></i>
+          <div class="container">
+            <div class="image">
+              <a href="#"><img src="fig/my-image.jpg" alt="" /></a>
+            </div>
+            <div class="author-content">
+              <h4>Phum (Gene) Siriviboon</h4>
+              <span>Ph.D. in Physics Statistics and Data Science</span>
+            </div>
+            <nav class="main-nav" role="navigation">
+              <ul class="main-menu">
+                <li><a href="#section1">About Me</a></li>
+                <li><a href="#section2">Projects</a></li>
+                <li><a href="#section3">Work Experience</a></li>
+                <li><a href="#section4">Publication</a></li>
+              </ul>
+            </nav>
+            <div class="social-network">
+              <ul class="soial-icons">
+                <li>
+                  <a href="https://github.com/GeneSiriviboon"><i class="fa fa-github"></i></a>
+                </li> 
+                <li>
+                  <a href="https://www.linkedin.com/in/phum-siriviboon-22a70b150/"><i class="fa fa-linkedin"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="copyright-text">
+              <p>Copyright 2019 Reflux Design</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<h2 id="Fun">Fun Project</h2>
+      <section class="section about-me" data-section="section1">
+        <div class="container">
+          <div class="section-heading">
+            <h2>About Me</h2>
+            <div class="line-dec"></div>
+            <span>
+                I'm a Ph.D. student in Physics, Statistics, and Data Science (PhySDS) at MIT. 
+            </span>
+            <br><br><br>
+            <div align = "left">
+               <p><strong>Technical Skills</strong></p>
+               <p><strong>Computer Language: </strong> C++, Python, Julia, Java, Scala, Racket, Ocaml, ReasonML, MATLAB,
+                VBA, Mathematica</p>
+                <p><strong>Library:</strong> Jax, Numpy, Scipy, openCV, Matplotlib, Kwant, Sympy, Pytorch, Tensorflow
+                    QuTIP, Qiskit</p>
+                <p><strong>Language:</strong>Thai, English</p>
+                </div>
+            </div>
+            <div class="section-heading">
+                <h2>Education</h2>
+                <div class="line-dec"></div>    
+            </div>
+            
+            <div class="row">
+                <div class="col-8"> <h5>MIT</h5></div>
+                <div class="col-4">2022 - 2024 (Ongoing)</div>
+            </div>
+            Ph.D. in Physics, Statistics, and Data Science
+            <hr>
+            <div class="row">
+                <div class="col-8"> <h5>Brown University</h5></div>
+                <div class="col-4">2018 - 2022</div>
+            </div>
+            B.S. Computer Science and Physics (Magna Cum Laude)
+            <hr>
+            <div class="row">
+                <div class="col-8"> <h5>Kent School</h5></div>
+                <div class="col-4">2017 - 2018</div>
+            </div>
+            Post-Graduate Degree
+            <hr>
+            <div class="row">
+                <div class="col-8"> <h5>Mahidol Wittayanusorn School</h5></div>
+                <div class="col-4">2013 - 2017</div>
+            </div>
+            High School
+          <!-- </div> -->
+          <!-- <div class="left-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-image">
+                  <img src="assets/images/left-image.jpg" alt="" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-text">
+                  <h4>Reflux HTML CSS Template</h4>
+                  <p>
+                    Donec tristique feugiat lacus, at sollicitudin nunc euismod
+                    sed. Mauris viverra, erat non sagittis gravida, elit dui
+                    mollis ante, sit amet eleifend purus ligula eget eros. Sed
+                    tincidunt quam vitae neque pharetra dignissim eget ut
+                    libero.
+                  </p>
+                  <div class="white-button">
+                    <a href="#">Read More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-text">
+                  <h4>Sed sagittis rhoncus velit</h4>
+                  <p>
+                    Pellentesque habitant morbi tristique senectus et netus et
+                    malesuada fames ac turpis egestas. Vestibulum fermentum
+                    eleifend nibh, vitae sodales elit finibus pretium.
+                    Suspendisse potenti. Ut sollicitudin risus a sollicitudin
+                    semper.
+                  </p>
+                  <div class="white-button">
+                    <a href="#">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-image">
+                  <img src="assets/images/right-image.jpg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </section>
 
-<ul>
-<li><a href="3body.html">3-body problems</a></li>
-</ul>
+      <section class="section projects" data-section="section2">
+        <div class="left-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-image">
+                    <!-- <img src="fig/CornellBox-Mirror-Importance.png" /> -->
+                    <img src="fig/CornellBox-Glossy-Importance.png" width="100%" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-text">
+                  <h4>Path Tracer</h4>
+                  <p>CS2240, Brown University</p>
+                  <p>
+                    This project returns a photorealistic of a given scenefile of lightsource and objects of different optical properties.
+                    I implement the code from scratch on C++ and benchmark the image with different optimizations including importance sampling, 
+                    stratified sampling, and multiple importance sampling.
+                  </p>
+                  <div class="white-button">
+                    <a href="pathtracer.html">Read More</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="right-image-post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="left-text">
+                  <h4>Simulating Constrainted Dynamics Using Automatic Differentiation</h4>
+                  <p>Phys2030, Brown University</p>
+                  <p>
+                    This project calculate dynamical properties i.e. Lyapunov 
+                    Exponent of the contrained dynamical system called astrojax. Traditionally, 
+                    the contrained solver i.e. Newton-Raphson method has to run in every timestep update, 
+                    making the computation cost expensive, espescially for non-linear dynamical system where the time-dynamic 
+                    is sensitive to initial condition. To circumvent the computational cost, I implement the explicit constrained method 
+                    which can solve the trajectory explicitely using the automatic differntiation on the constain. 
+                  </p>
+                  <div class="white-button">
+                    <a href="astrojax_report.pdf">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="right-image">
+                    <img src="fig/astrojax.gif" />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        <!-- <div class="container">
+          <div class="section-heading">
+            <h2>Projects</h2>
+            <div class="line-dec"></div>
+            <span
+              >Curabitur leo felis, rutrum vitae varius eu, malesuada a tortor.
+              Vestibulum congue leo et tellus aliquam, eu viverra nulla semper.
+              Nullam eu faucibus diam. Donec eget massa ante.</span
+            >
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="first-service-icon service-icon"></div>
+                <h4>HTML5 &amp; CSS3</h4>
+                <p>
+                  Phasellus non convallis dolor. Integer tempor hendrerit arcu
+                  at bibendum. Sed ac ante non metus vehicula congue quis eget
+                  eros.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="second-service-icon service-icon"></div>
+                <h4>Creative Ideas</h4>
+                <p>
+                  Proin lacus massa, eleifend sed fermentum in, dignissim vel
+                  metus. Nunc accumsan leo nec felis porttitor, ultricies
+                  faucibus purus mollis.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="third-service-icon service-icon"></div>
+                <h4>Easy Customize</h4>
+                <p>
+                  Integer suscipit condimentum aliquet. Nam quis risus metus.
+                  Nullam faucibus quam eget arcu pretium tincidunt. Nam libero
+                  dui.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="service-item">
+                <div class="fourth-service-icon service-icon"></div>
+                <h4>Admin Dashboard</h4>
+                <p>
+                  Vivamus et dui a massa venenatis fringilla. Proin lacus massa,
+                  eleifend sed fermentum in, dignissim vel metus. Nunc accumsan
+                  leo nec felis porttitor.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </section>
 
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-</body>
+      <section class="section work experiences" data-section="section3">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Work Experiences</h2>
+            <div class="line-dec"></div>
+            <span
+            </span
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section publication" data-section="section4">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Publication</h2>
+            <div class="line-dec"></div>
+            <ol class="left">
+                <li>Fu, C., Siriviboon, P., Boonkird, A., Landry, M., Li, C., Xie, W., & Li, M. (2024). Anomalous
+                    Neutron Nuclear-Magnetic Interference Spectroscopy. arXiv preprint arXiv:2403.13990.</li>
+                <li>Drucker, N., Nguyen, T., Mandal, M., Siriviboon, P., Quan, Y., Boonkird, A., ... & Li, M. (2024).
+                    Incipient nematicity from electron flat bands in a kagome metal. arXiv preprint arXiv:2401.17141.</li>
+                <li>Drucker, N. C., Nguyen, T., Han, F., Siriviboon, P., Luo, X., Andrejevic, N., ... & Li, M. (2023).
+                    Topology stabilized fluctuations in a magnetic nodal semimetal. Nature Communications, 14(1),
+                    5182.</li>
+                <li>Mandal, M., Drucker, N. C., Siriviboon, P., Nguyen, T., Boonkird, A., Lamichhane, T. N., ... &
+                    Li, M. (2023). Topological superconductors from a materials perspective. Chemistry of Materials,
+                    35(16), 6184-6200.</li>
+                <li>Lin, J. X., Siriviboon, P., Scammell, H. D., Liu, S., Rhodes, D., Watanabe, K., ... & Li, J. I.
+                    A. (2022). Zero-field superconducting diode effect in small-twist-angle trilayer graphene. Nature
+                    Physics , 18(10), 1221-1227.</li>
+                <li>Phum Siriviboon, Jiang-Xiazi Lin, Harley D. Scammell, Song Liu, Daniel Rhodes, K. Watanabe,
+                    T. Taniguchi, James Hone, Mathias S. Scheurer, and J. I. A. Li. Abundance of density wave
+                    phases in twisted trilayer graphene on WSe2. 2021. arXiv:2112.07127</li>
+                <li>Phum Siriviboon, Chawalit Tungkaburee, Naruepon Weerawongphrom, and Chadin Kulsing. Direct equations to retention time calculation and fast simulation approach for simultaneous material
+                    selection and experimental design in comprehensive two dimensional gas chromatography. Journal
+                    of Chromatography A, 1602:425-431, 2019</li>
+                </ol>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+      //according to loftblog tut
+      $(".main-menu li:first").addClass("active");
+
+      var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+          reqSection = $(".section").filter(
+            '[data-section="' + direction + '"]'
+          ),
+          reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $("body, html").animate(
+            {
+              scrollTop: reqSectionPos
+            },
+            800
+          );
+        } else {
+          $("body, html").scrollTop(reqSectionPos);
+        }
+      };
+
+      var checkSection = function checkSection() {
+        $(".section").each(function() {
+          var $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data("section"),
+              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+            reqLink
+              .closest("li")
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        });
+      };
+
+      $(".main-menu").on("click", "a", function(e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+      });
+
+      $(window).scroll(function() {
+        checkSection();
+      });
+    </script>
+  </body>
 </html>
