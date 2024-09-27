@@ -30,27 +30,40 @@ https://templatemo.com/tm-531-reflux
       <h1 id="path-tracing">Flat Self Assembly</h1>
         <p align="center"><img src="fig/flat_sample.png" width = "20%""></p>
         <p><strong>Inputs:</strong> <code>.mp4</code> top-down video of spherical beads at different 
-                <li>Number of particles, N</li>
-                <li>Amplitude of the vibration, A</li>
+            <ol><li>Number of particles, N</li>
+                <li>Amplitude of the vibration, A</li></ol>
         <p><strong>Outputs:</strong> The estimated entropy of the system</p>
         <h2>Data Acquisition</h2>
         <p align="center"><img src="fig/flat_setup.png" width="30%"></p>
         <p> <ol>
-            <li> Start the video record</li>
-            <li> On an applied voltage (amplitude), put a set of 10 particles into the plate </li>
-            <li> Wait for 30s for the system to equilibrate </li>
-            <li> Repeat 2, 3 until 205 particles is in a plate </li>
-            <li> Stop the video record</li>
-            <li> Repeat the whole process with different amplitude</li>
+            <li> Start the video record. </li>
+            <li> On an applied voltage (amplitude), put a set of 10 particles into the plate. </li>
+            <li> Wait for 30s for the system to equilibrate. </li>
+            <li> Repeat 2, 3 until 205 particles is in a plate. </li>
+            <li> Stop the video record.</li>
+            <li> Repeat the whole process with different amplitude.</li>
            </li>
         </ol></p>
         This setup allow minimal perturbance to the data acquisition which help the system equilibrate with a smaller amount of time.
        </p>
        <h2>Data Workflow</h2>
+       <p><ol>
+        <li>Iterate through each frame in the video</li>
+        <li>Use circle detection to find the centroid position of each particles</li>
+        <li>Repeat for the next frame</li>
+        <li>Find optimal transport map between the two frames and correlated the particle in the first frame to the second frame.</li>
+        <li>Calculate the momentum from finite difference method </li>
+        <li>Bin the position and momentum into histogram</li>
+        <li>Calculate the shannon entropy and average energy using the probability estimation from histogram</li>
+       </ol></p>
 
-
-    
-
+       <h2>Results</h2>
+       The phase transition is found near N ~ 100 from the discontinuity in free energy, indicating a second order phase transition.
+       <p align="center">
+        <img src="fig/flat_energy.png" width = "30%">
+        <img src="fig/flat_entropy.png"  width = "30%">
+        <img src="fig/flat_free_energy.png"  width = "30%">
+       </p>
 
 
     
