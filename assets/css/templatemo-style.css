@@ -375,14 +375,14 @@ button:hover {
 /* Left & Right Post */
 
 .right-image-post {
-    margin-top: 30px;
-    padding-top: 30px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 2px solid rgba(250, 250, 250, 0.1);
 }
 
 .left-image-post {
-    margin-top: 30px;
-    padding-top: 30px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 2px solid rgba(250, 250, 250, 0.1);
 }
 
