@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+
+  <title>Phum (Gene) Siriviboon</title>
+  <!--
+Reflux Template
+https://templatemo.com/tm-531-reflux
+-->
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+  <link rel="stylesheet" href="assets/css/owl.css" />
+  <link rel="stylesheet" href="assets/css/lightbox.css" />
+</head>
+
+<body>
+
+  <div id="page-wraper">
+    <div class="container">
+        <h1 id="as-rigid-as-possible-surface-modeling-arap-"> As-Rigid-As-Possible Surface Modeling (ARAP)</h1>
+ Implementaion of a user-interactive deformation of 3D meshes. Mesh vertices can be re-positioned by clicking and dragging. The system will update the rest of the mesh in response to these user interactions such that it moves as-rigidly-as-possible (i.e. the deformation it exhibits is close to a rigid transformation). The end result is a deformation that looks physically-plausible, as if the mesh has an underlying rig / skeletal armature.
+       
+ To achieve this goal, the deformation process will be formulated as an optimization problem which alternates between estimating the best-fit rigid transformation for each mesh vertex and solving a sparse linear system to find new mesh vertex positions.</p>
+
+<h2>Algorithm</h2>
+Each time the user initiates an interaction, the code will do the following:
+<p>
+<ol>
+<li>Initialize 
+    <ul>
+    <li>Set an initial value for the new vertex positions <strong>p&#39;</strong>.</li>
+    <br>
+    <li>Build the L matrix 
+    <li>Determine the one-ring neighbors of each vertex.</li>
+    <br>
+    <li>Calculate the cotangent weight <strong>w</strong> for each vertex.</li>
+    <br>
+    <li>Fill in the L matrix entries.</li> 
+    <br>
+<li>Apply the user constraints by deleting rows/columns from L.</li>
+<br>
+<li>Pre-compute the decomposition of the L matrix </li>
+</ul> 
+</li>
+<li>Iterate between <ul>
+<li>Determining the best-fit rotation transformation <strong>R</strong> for the moved point <strong>p&#39;</strong> from original point <strong>p</strong>.</li>
+<li>Optimize the position <strong>p&#39;</strong> given <strong>p</strong> and <strong>R</strong> by solving a sparse linear system. The right-hand side of the equation is updated accordingly.  </li>
+</ul>
+</li>
+</ol>
+</p>
+<p>Note that for simplicity, the code to work on <strong>closed, manifold</strong> meshes. 
+
+<p>User controls: the controls offered by the starter code are:</p>
+<ul>
+<li>Move Camera: WASD</li>
+<li>Look around: Click and hold mouse and drag</li>
+<li>Toggle orbit mode: C (changes the camera from a first-person view to an orbiting camera a la what the Maya editor does)</li>
+<li>Toggle between displaying the surface mesh and a wireframe of the full tet mesh: T</li>
+</ul>
+<h2 id="example-video">Example Video</h2>
+<video width="320" height="240" controls>
+    <source src="https://user-images.githubusercontent.com/39507598/157359369-71d9a28f-0e49-4f83-880e-0119e0161f4f.mov">https://user-images.githubusercontent.com/39507598/157359369-71d9a28f-0e49-4f83-880e-0119e0161f4f.mov" type="video/mov">
+</video><video width="320" height="240" controls>
+    <source src="https://user-images.githubusercontent.com/39507598/157359482-750e4c76-daf6-4b7f-9611-a365cc6f9aa2.mov">https://user-images.githubusercontent.com/39507598/157359482-750e4c76-daf6-4b7f-9611-a365cc6f9aa2.mov" type="video/mov">
+</video>
+<video width="320" height="240" controls>
+    <source src="https://user-images.githubusercontent.com/39507598/157359737-86bfc3a5-c82b-4417-86d6-3e31a4b65dbe.mov">https://user-images.githubusercontent.com/39507598/157359737-86bfc3a5-c82b-4417-86d6-3e31a4b65dbe.mov">https://user-images.githubusercontent.com/39507598/157359482-750e4c76-daf6-4b7f-9611-a365cc6f9aa2.mov" type="video/mov">
+    Your browser does not support the video tag.
+  </video> 
+<!-- <p><a href="https://user-images.githubusercontent.com/39507598/157359369-71d9a28f-0e49-4f83-880e-0119e0161f4f.mov">https://user-images.githubusercontent.com/39507598/157359369-71d9a28f-0e49-4f83-880e-0119e0161f4f.mov</a></p> -->
+<!-- <p><a href="https://user-images.githubusercontent.com/39507598/157359482-750e4c76-daf6-4b7f-9611-a365cc6f9aa2.mov">https://user-images.githubusercontent.com/39507598/157359482-750e4c76-daf6-4b7f-9611-a365cc6f9aa2.mov</a></p> -->
+<!-- <p><a href="https://user-images.githubusercontent.com/39507598/157359737-86bfc3a5-c82b-4417-86d6-3e31a4b65dbe.mov">https://user-images.githubusercontent.com/39507598/157359737-86bfc3a5-c82b-4417-86d6-3e31a4b65dbe.mov</a></p> -->
+
+    
+    </div>
+      
+      
+    </div>
+    <!-- </div> -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script>
+      //according to loftblog tut
+      $(".main-menu li:first").addClass("active");
+
+      var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+          reqSection = $(".section").filter(
+            '[data-section="' + direction + '"]'
+          ),
+          reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+          $("body, html").animate(
+            {
+              scrollTop: reqSectionPos
+            },
+            800
+          );
+        } else {
+          $("body, html").scrollTop(reqSectionPos);
+        }
+      };
+
+      var checkSection = function checkSection() {
+        $(".section").each(function () {
+          var $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+          if (topEdge < wScroll && bottomEdge > wScroll) {
+            var currentId = $this.data("section"),
+              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+            reqLink
+              .closest("li")
+              .addClass("active")
+              .siblings()
+              .removeClass("active");
+          }
+        });
+      };
+
+      $(".main-menu").on("click", "a", function (e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+      });
+
+      $(window).scroll(function () {
+        checkSection();
+      });
+    </script>
+</body>
+
+</html>
