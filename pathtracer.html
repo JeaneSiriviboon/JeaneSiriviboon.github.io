@@ -1,177 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
-      rel="stylesheet"
-    />
 
-    <title>Phum (Gene) Siriviboon</title>
-<!--
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" />
+
+  <title>Phum (Gene) Siriviboon</title>
+  <!--
 Reflux Template
 https://templatemo.com/tm-531-reflux
 -->
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css" />
-    <link rel="stylesheet" href="assets/css/templatemo-style.css" />
-    <link rel="stylesheet" href="assets/css/owl.css" />
-    <link rel="stylesheet" href="assets/css/lightbox.css" />
-  </head>
-  <body>
-    
-<div id="page-wraper">
-  <div class="container">
-  <!-- <section class="section"> -->
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+  <link rel="stylesheet" href="assets/css/owl.css" />
+  <link rel="stylesheet" href="assets/css/lightbox.css" />
+</head>
 
-    
-<h1 id="path-tracing">Path Tracing (path)</h1>
-<p><strong>specify different scene file inputs</strong></p>
-<p><ul>
-  <li><strong>Lightsource</strong>: only support lights source from <code>.obj</code> with emissive atribute in <code>.mtl</code> file</li>
-  <li><strong>Refractive Material</strong>: use illum between 3 and 8 with the index of refraction that is not one</li>
-  <li><strong>Mirror material</strong>: use illum between 3 and 8 with the index of refraction that is one</li>
-  <li><strong>Glossy material</strong>: material with illum other than 3-8 with non-zero specular coefficient</li>
-  <li><p><strong>Diffusive Material</strong>:  any material which is not any of the above and have non-zero diffusive coefficient</p>
-  <p><strong>Parameter in the Program (pathTracer.h)</strong></p>
-  <ul>
-  <li><strong>m_sampling</strong> : [IMPORTANCE_SAMPLING | UNIFORM_SAMPLING | MULTIPLE_IMPORTANCE_SAMPLING] </li>
-  <li><strong>m_lighting</strong> : [INDIRECT_LIGHTING |DIRECT_LIGHTING | GLOBAL_LIGHTING] </li>
-  <li><strong>m_rayPerSubPixel</strong> : the number of ray per stratified pixel </li>
-  <li><strong>m_numStratified</strong> : dividing 1 pixel into m_numStratified * m_numStratified grid before sampling </li>
-  <li><strong>m_focalLength</strong> , <strong>m_aperture</strong> : parameter for focal blur </li>
-  <li><strong>m_pdf_rr</strong>: Russian Roulette Probability</li>
-  <li><strong>m_useMixedLighting</strong> : whether to use the combination of diffusive and specular lighting</li>
-  </ul>
-</p>
+<body>
 
-</li>
-</ul>
-<h2 id="vanilla-ray-tracer">Vanilla Ray Tracer</h2>
-<p align="center">
-  <img src="fig/Cornell-1k-uniform-95rr-noopt.png"/>
-  <p align="center"> <strong> Figure 1: </strong>The Cornell Box rendering at 1000 spp, Russian Roulette with 95% probability with indirect lighting and no other optimization. One can see that the diffuse effect and the color bleeding is functional.</p>
-</p>
+  <div id="page-wraper">
+    <div class="container">
+      <!-- <section class="section"> -->
 
-<h2 id="direct-lighting">Direct lighting</h2>
-<p>The figure below shows the CornellBox illuminated with direct lighting only, direct lighting global illumination, and indirect lighting.</p>
-<p align="center">
-  <img src="fig/direct1000spp.png" />
-  <img src="fig/global1000spp.png" />
-  <img src="fig/indirect1000spp.png" />
-  <p align="center"> <strong> Figure 2: </strong>
-  The CornellBox with 1000 spp and uniform hemisphere sampling. (The direct lighting only is brighter due to the tone mapping)</p>
-</p>
+      <h1 id="path-tracing">Path Tracing (path)</h1>
+      <p><strong>Scene File Inputs</strong></p>
+      <p>
+      <ul>
+        <li><strong>Lightsource</strong>: only support lights source from <code>.obj</code> with emissive atribute in
+          <code>.mtl</code> file</li>
+        <li><strong>Refractive Material</strong>: use illum between 3 and 8 with the index of refraction that is not one
+        </li>
+        <li><strong>Mirror material</strong>: use illum between 3 and 8 with the index of refraction that is one</li>
+        <li><strong>Glossy material</strong>: material with illum other than 3-8 with non-zero specular coefficient</li>
+        <li>
+          <p><strong>Diffusive Material</strong>: any material which is not any of the above and have non-zero diffusive
+            coefficient</p>
+          <p><strong>Parameter in the Program (pathTracer.h)</strong></p>
+          <ul>
+            <li><strong>m_sampling</strong> : [IMPORTANCE_SAMPLING | UNIFORM_SAMPLING | MULTIPLE_IMPORTANCE_SAMPLING]
+            </li>
+            <li><strong>m_lighting</strong> : [INDIRECT_LIGHTING |DIRECT_LIGHTING | GLOBAL_LIGHTING] </li>
+            <br>
+            <li><strong>m_rayPerSubPixel</strong> : the number of ray per stratified pixel </li>
+            <br>
+            <li><strong>m_numStratified</strong> : dividing 1 pixel into m_numStratified * m_numStratified grid before
+              sampling </li>
+            <li><strong>m_focalLength</strong> , <strong>m_aperture</strong> : parameter for focal blur </li>
+            <li><strong>m_pdf_rr</strong>: Russian Roulette Probability</li>
+            <br>
+            <li><strong>m_useMixedLighting</strong> : whether to use the combination of diffusive and specular lighting
+            </li>
+          </ul>
+          </p>
 
-<h2 id="different-type-of-material">Different Type of Material</h2>
-<p>The figure below show the rendering of variation of Cornell Boxes with different material. Although the sample per pixel is the same, we can see that the quality of the image differs in each case, this can be resolved to some extend with the importance sampling.</p>
-<p align="center">
-<img src="fig/global1000spp.png" />
-<img src="fig/CornellBox-Mirror.png" />
-<img src="fig/CornellBox-Glossy.png" />
-<img src="fig/CornellBox-Sphere.png" />
-<p align="center"> <strong> Figure 3: </strong> The direct lighting global illumination of diffuse material, mirror material, glossy material, and refraction material. respectively. 1000 spp is used for each image. </p>
-</p>
+        </li>
+      </ul>
+      <h2 id="vanilla-ray-tracer">Vanilla Ray Tracer</h2>
+      <p align="center">
+        <img src="fig/Cornell-1k-uniform-95rr-noopt.png" />
+      <p align="center"> <strong> Figure 1: </strong>The Cornell Box rendering at 1000 spp, Russian Roulette with 95%
+        probability with indirect lighting and no other optimization. One can see that the diffuse effect and the color
+        bleeding is functional.</p>
+      </p>
 
+      <h2 id="direct-lighting">Direct lighting</h2>
+      <p>The figure below shows the CornellBox illuminated with direct lighting only, direct lighting global
+        illumination, and indirect lighting.</p>
+      <p align="center">
+        <img src="fig/direct1000spp.png" />
+        <img src="fig/global1000spp.png" />
+        <img src="fig/indirect1000spp.png" />
+      <p align="center"> <strong> Figure 2: </strong>
+        The CornellBox with 1000 spp and uniform hemisphere sampling. (The direct lighting only is brighter due to the
+        tone mapping)</p>
+      </p>
 
-<h2 id="importance-sampling">Importance Sampling</h2>
-<p align="center">
-  <img src="fig/CornellBox-Diffuse-Uniform.png" />
-  <img src="fig/CornellBox-Diffuse-Importance.png" />
-  <p align="center"> <strong> Figure 4: </strong>(left) Cornell Box with 1000spp and unifrom sampling. (right)The same scene with the left but with importance sampling. </p>
-</p>
-
-<p align="center">
-  <img src="fig/CornellBox-Glossy-Uniform.png" />
-  <img src="fig/CornellBox-Glossy-Importance.png" />
-  <p align="center"> <strong> Figure 5: </strong>(left)Glossy-specular Cornell Box with 1000spp and unifrom sampling. (right)The same scene with the left but with importance sampling. </p>
-</p>
-
-<p align="center">
-  <img src="fig/CornellBox-Mirror-Uniform.png" />
-  <img src="fig/CornellBox-Mirror-Importance.png" />
-  <p align="center"> <strong> Figure 6: </strong>(left) Mirror Cornell Box with 1000spp and unifrom sampling. (right)The same scene with the left but with importance sampling. </p>
-</p>
-
-<p align="center">
-  <img src="fig/CornellBox-Sphere-Uniform.png" />
-  <img src="fig/CornellBox-Sphere-Importance.png" />
-  <p align="center"> <strong> Figure 7: </strong>(left) Refractive Cornell Box with 1000spp and unifrom sampling. (right)The same scene with the left but with importance sampling. </p>
-</p>
+      <h2 id="different-type-of-material">Different Type of Material</h2>
+      <p>The figure below show the rendering of variation of Cornell Boxes with different material. Although the sample
+        per pixel is the same, we can see that the quality of the image differs in each case, this can be resolved to
+        some extend with the importance sampling.</p>
+      <p align="center">
+        <img src="fig/global1000spp.png" />
+        <img src="fig/CornellBox-Mirror.png" />
+        <img src="fig/CornellBox-Glossy.png" />
+        <img src="fig/CornellBox-Sphere.png" />
+      <p align="center"> <strong> Figure 3: </strong> The direct lighting global illumination of diffuse material,
+        mirror material, glossy material, and refraction material. respectively. 1000 spp is used for each image. </p>
+      </p>
 
 
-<h2 id="stratified-sampling">Stratified Sampling</h2>
-<p>(Apparently this doesn&#39;t really improve the image quality that much.)</p>
-<p align="center">
-  <img src="fig/CornellBox-Glossy-Importance.png" />
-  <img src="fig/CornellBox-Glossy-Strat.png" />
-  <p align="center"> <strong> Figure 8: </strong>(left)Glossy-specular Cornell Box with 1000spp and importance sampling. (right)The same scene with the left but with stratified sampling with 100 subpixels. </p>
-</p>
+      <h2 id="importance-sampling">Importance Sampling</h2>
+      <p align="center">
+        <img src="fig/CornellBox-Diffuse-Uniform.png" />
+        <img src="fig/CornellBox-Diffuse-Importance.png" />
+      <p align="center"> <strong> Figure 4: </strong>(left) Cornell Box with 1000spp and unifrom sampling. (right)The
+        same scene with the left but with importance sampling. </p>
+      </p>
 
-<h2 id="multiple-importance-sampling">Multiple Importance Sampling</h2>
-<p>In this case, we consider the combination of the diffuse and specular material. One can see that the noise on the box is greatly reduced. (This is the same <code>.obj</code> file with CornellBox-Gloosy but taking diffusive coefficient into the consideration.)</p>
-<p align="center">
-  <img src="fig/CornellBox-IS.png" />
-  <img src="fig/CornellBox-MIS.png" />
-  <p align="center"> <strong> Figure 9: </strong>(left)Glossy-specular with diffuse coefficient Cornell Box with 1000spp and importance sampling. (right)The same scene with the left but with multiple importance sampling </p>
-</p>
+      <p align="center">
+        <img src="fig/CornellBox-Glossy-Uniform.png" />
+        <img src="fig/CornellBox-Glossy-Importance.png" />
+      <p align="center"> <strong> Figure 5: </strong>(left)Glossy-specular Cornell Box with 1000spp and unifrom
+        sampling. (right)The same scene with the left but with importance sampling. </p>
+      </p>
+
+      <p align="center">
+        <img src="fig/CornellBox-Mirror-Uniform.png" />
+        <img src="fig/CornellBox-Mirror-Importance.png" />
+      <p align="center"> <strong> Figure 6: </strong>(left) Mirror Cornell Box with 1000spp and unifrom sampling.
+        (right)The same scene with the left but with importance sampling. </p>
+      </p>
+
+      <p align="center">
+        <img src="fig/CornellBox-Sphere-Uniform.png" />
+        <img src="fig/CornellBox-Sphere-Importance.png" />
+      <p align="center"> <strong> Figure 7: </strong>(left) Refractive Cornell Box with 1000spp and unifrom sampling.
+        (right)The same scene with the left but with importance sampling. </p>
+      </p>
 
 
-<p><strong>Implementation detail</strong>: </p>
-<ul>
-<li><p><code>util/helper.cpp</code> : This files contain a helper function.</p>
-<ul>
-<li><strong>randomf</strong> : random a float between 0-1</li>
-<li><strong>refl</strong> : calculate the reflection of the incoming ray over the normal vector</li>
-<li><strong>getNormalCoordinate</strong>: calculate the rotation matrix of the vector that rotate unit vector +z to an arbritary vector n. This method choose the other two basis by enforcing that either the x-component or the y-component of the new basis is zero.</li>
-<li><p><strong>uniformSampleHemisphere</strong>: uniform sampling a point in the surface of the unit hemisphere where the axis of the hemisphere is pointing toward a vector n. For the extracredit of importance sampling, we would need to move this function into the <code>pathtracer.cpp</code> and incoperate the information of the material into the sampling.</p>
-</li>
-<li><p><strong>cosineSampleHemisphere</strong>: Sample the light with cosine probability this is used as an importance sampling for the diffuse material</p>
-</li>
-<li><p><strong>glossySampleHemisphere</strong>: importance sampling for the glossy-specular material</p>
-</li>
-<li><strong>freshel</strong>: calculate the transmittion vector and the transmittance of the freshnel material</li>
-</ul>
-</li>
-<li><p><code>pathtracer.cpp</code> :</p>
-<ul>
-<li><strong>traceScene</strong>: looping to all pixel and call tracePixel to find the radiance and normalize it with toneMapping before putting the value inside the image</li>
-<li><strong>tracePixel</strong>: I implement the stratified sampling where one choose the parameter num_stratified to divide each pixel into num_stratified x num_stratified subpixels. Then, sample N rays from each subpixels randomly. The radiance for each ray is average and return into traceScene.</li>
-<li><strong>traceRay</strong>: find the radiance for each ray. The intersected point is calculate and the sampling for rendering equation occurs here. The detail for sample depends on the material.</li>
-<li><strong>toneMap</strong>: The tone map is calculated following the method from <a href="http://www.cmap.polytechnique.fr/~peyre/cours/x2005signal/hdr_photographic.pdf">this paper</a></li>
-<li><strong>getMaterial</strong>: determine the type of the material. Currently, the MIRROR is define as the material has illum between 3 and 8. <em>The Freshnel Material is not supported yet</em>. The Specular material is defined to be the material which is not Mirror/Freshnel and have non-zero specular coefficient. The diffuse material is define as the material which is not the first three which have non-zero diffusion coefficient.</li>
-<li><strong>BRDF</strong>: calculate the bdrf of the matrial from the material type, normal vector, incoming and outgoing ray.
-Note that the MIRROR_MATERIAL have this equals to one by default but it is not actually use as all the mirror reflect identically in our model.</li>
-<li><strong>directLighting</strong>: calculate the direct lighting</li>
-<li><strong>traceHelper</strong>: calling trace according to the object</li>
-<li><strong>traceMirror, traceRefract, traceMaterial</strong>: path tracing for each material</li>
-<li><strong>generateFocalRay</strong>: generate ray in such a way that mimic the focal blue effect</li>
-<li><strong>sampleHemisphere</strong> : sampling the light ray according to the material</li>
-<li><strong>getAreaLight</strong> : get the total Area of the light source and initializing a light sample</li>
-<li><strong>sampleLightArea</strong>: sample the light source for direct lighting</li>
-</ul>
-</li>
-<li>Other Part of the code<ul>
-<li>I modify the Mesh object so that it can return all of the triangle light source which I store in the scene class for direct lighting</li>
-<li>I have a function for the triangle to calculate a uniformly random position in the triangle from 2 random number</li>
-<li>I have a function for the triangle to calculate the area of the triangle from its vertices</li>
-</ul>
-</li>
-</ul>
-<p>file and the <code>pathtracer.cpp</code> file. Currently, <code>util/helper.cpp</code> deal with the helper function that doesn&#39;t take in the detail about the path tracing such as the random</p>
-</section>
-</div>
-<!-- </div> -->
-<script src="vendor/jquery/jquery.min.js"></script>
+      <h2 id="stratified-sampling">Stratified Sampling</h2>
+      <p>(Apparently this doesn&#39;t really improve the image quality that much.)</p>
+      <p align="center">
+        <img src="fig/CornellBox-Glossy-Importance.png" />
+        <img src="fig/CornellBox-Glossy-Strat.png" />
+      <p align="center"> <strong> Figure 8: </strong>(left)Glossy-specular Cornell Box with 1000spp and importance
+        sampling. (right)The same scene with the left but with stratified sampling with 100 subpixels. </p>
+      </p>
+
+      <h2 id="multiple-importance-sampling">Multiple Importance Sampling</h2>
+      <p>In this case, we consider the combination of the diffuse and specular material. One can see that the noise on
+        the box is greatly reduced. (This is the same <code>.obj</code> file with CornellBox-Gloosy but taking diffusive
+        coefficient into the consideration.)</p>
+      <p align="center">
+        <img src="fig/CornellBox-IS.png" />
+        <img src="fig/CornellBox-MIS.png" />
+      <p align="center"> <strong> Figure 9: </strong>(left)Glossy-specular with diffuse coefficient Cornell Box with
+        1000spp and importance sampling. (right)The same scene with the left but with multiple importance sampling </p>
+      </p>
+
+
+      <p><strong>Implementation detail</strong>: </p>
+      <ul>
+        <li>
+          <p><code>util/helper.cpp</code> : This files contain a helper function.</p>
+          <ul>
+            <li><strong>randomf</strong> : random a float between 0-1</li>
+            <br>
+            <li><strong>refl</strong> : calculate the reflection of the incoming ray over the normal vector</li>
+            <li><strong>getNormalCoordinate</strong>: calculate the rotation matrix of the vector that rotate unit
+              vector +z to an arbritary vector n. This method choose the other two basis by enforcing that either the
+              x-component or the y-component of the new basis is zero.</li>
+            <li>
+              <p><strong>uniformSampleHemisphere</strong>: uniform sampling a point in the surface of the unit
+                hemisphere where the axis of the hemisphere is pointing toward a vector n. 
+            </li>
+            <li>
+              <p><strong>cosineSampleHemisphere</strong>: Sample the light with cosine probability this is used as an
+                importance sampling for the diffuse material</p>
+            </li>
+            <li>
+              <p><strong>glossySampleHemisphere</strong>: importance sampling for the glossy-specular material</p>
+            </li>
+            <li><strong>freshel</strong>: calculate the transmittion vector and the transmittance of the freshnel
+              material</li>
+          </ul>
+        </li>
+        <li>
+          <p><code>pathtracer.cpp</code> :</p>
+          <ul>
+            <li><strong>traceScene</strong>: looping to all pixel and call tracePixel to find the radiance and normalize
+              it with toneMapping before putting the value inside the image</li>
+            <li><strong>tracePixel</strong>: I implement the stratified sampling where one choose the parameter
+              num_stratified to divide each pixel into num_stratified x num_stratified subpixels. Then, sample N rays
+              from each subpixels randomly. The radiance for each ray is average and return into traceScene.</li>
+            <li><strong>traceRay</strong>: find the radiance for each ray. The intersected point is calculate and the
+              sampling for rendering equation occurs here. The detail for sample depends on the material.</li>
+            <li><strong>toneMap</strong>: The tone map is calculated following the method from <a
+                href="http://www.cmap.polytechnique.fr/~peyre/cours/x2005signal/hdr_photographic.pdf">this paper</a>
+            </li>
+            <li><strong>getMaterial</strong>: determine the type of the material. Currently, the MIRROR is define as the
+              material has illum between 3 and 8. <em>The Freshnel Material is not supported yet</em>. The Specular
+              material is defined to be the material which is not Mirror/Freshnel and have non-zero specular
+              coefficient. The diffuse material is define as the material which is not the first three which have
+              non-zero diffusion coefficient.</li>
+            <li><strong>BRDF</strong>: calculate the bdrf of the matrial from the material type, normal vector, incoming
+              and outgoing ray.
+              Note that the MIRROR_MATERIAL have this equals to one by default but it is not actually use as all the
+              mirror reflect identically in our model.</li>
+            <li><strong>directLighting</strong>: calculate the direct lighting</li>
+            <li><strong>traceHelper</strong>: calling trace according to the object</li>
+            <li><strong>traceMirror, traceRefract, traceMaterial</strong>: path tracing for each material</li>
+            <li><strong>generateFocalRay</strong>: generate ray in such a way that mimic the focal blue effect</li>
+            <li><strong>sampleHemisphere</strong> : sampling the light ray according to the material</li>
+            <li><strong>getAreaLight</strong> : get the total Area of the light source and initializing a light sample
+            </li>
+            <li><strong>sampleLightArea</strong>: sample the light source for direct lighting</li>
+          </ul>
+        </li>
+        <li>Other Part of the code<ul>
+            <li>I modify the Mesh object so that it can return all of the triangle light source which I store in the
+              scene class for direct lighting</li>
+            <li>I have a function for the triangle to calculate a uniformly random position in the triangle from 2
+              random number</li>
+            <li>I have a function for the triangle to calculate the area of the triangle from its vertices</li>
+          </ul>
+        </li>
+      </ul>
+      <p>file and the <code>pathtracer.cpp</code> file. Currently, <code>util/helper.cpp</code> deal with the helper
+        function that doesn't take in the detail about the path tracing such as the random</p>
+      <!-- </section> -->
+    </div>
+    <!-- </div> -->
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <script src="assets/js/isotope.min.js"></script>
@@ -202,7 +250,7 @@ Note that the MIRROR_MATERIAL have this equals to one by default but it is not a
       };
 
       var checkSection = function checkSection() {
-        $(".section").each(function() {
+        $(".section").each(function () {
           var $this = $(this),
             topEdge = $this.offset().top - 80,
             bottomEdge = topEdge + $this.height(),
@@ -219,14 +267,15 @@ Note that the MIRROR_MATERIAL have this equals to one by default but it is not a
         });
       };
 
-      $(".main-menu").on("click", "a", function(e) {
+      $(".main-menu").on("click", "a", function (e) {
         e.preventDefault();
         showSection($(this).attr("href"), true);
       });
 
-      $(window).scroll(function() {
+      $(window).scroll(function () {
         checkSection();
       });
     </script>
-  </body>
+</body>
+
 </html>
